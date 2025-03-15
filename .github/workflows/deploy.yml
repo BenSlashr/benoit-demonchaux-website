@@ -21,7 +21,7 @@ jobs:
             git pull origin main
             sudo systemctl restart nginx
 
- - name: Debug SSH Connection
+      - name: Debug SSH Connection  # ✅ Bien aligné sous `steps:`
         uses: appleboy/ssh-action@master
         with:
           host: 51.75.124.6
