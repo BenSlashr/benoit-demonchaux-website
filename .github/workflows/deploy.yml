@@ -10,25 +10,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: SSH into VPS and deploy
-        uses: appleboy/ssh-action@master
-        with:
-          host: 51.75.124.6  # Remplace par ton IP VPS
-          username: debian
-          key: ${{ secrets.SSH_PRIVATE_KEY }}  # 🔑 Utilise la clé privée stockée dans GitHub Secrets
-          script: |
-            cd /var/www/benoit-demonchaux-website
-            git pull origin main
-            sudo systemctl restart nginx
+      - name: Vérification de la présence de SSH_PRIVATE_KEY
+        run: |
+          if [ -z "${{ secrets.SSH_PRIVATE_KEY }}" ]; then
+            echo "❌ SECRET SSH_PRIVATE_KEY NON DÉTECTÉ !"
+            exit 1
+          else
+            echo "✅ SECRET SSH_PRIVATE_KEY détecté"
+          fi
 
-      - name: Debug SSH Connection  # ✅ Bien aligné sous `steps:`
+      - name: SSH into VPS and deploy
         uses: appleboy/ssh-action@master
         with:
           host: 51.75.124.6
           username: debian
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            echo "✅ Connexion SSH réussie !"
-            whoami
-            ls -l /var/www/benoit-demonchaux-website
-            git status
+            cd /var/www/benoit-demonchaux-website
+            git pull origin main
+            sudo systemctl restart nginx
