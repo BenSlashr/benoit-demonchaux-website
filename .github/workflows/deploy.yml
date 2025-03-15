@@ -19,12 +19,19 @@ jobs:
             echo "✅ SECRET SSH_PRIVATE_KEY détecté"
           fi
 
+      - name: Tester la connexion SSH manuellement
+        run: |
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key
+          chmod 600 private_key
+          ssh -i private_key -o StrictHostKeyChecking=no debian@51.75.124.6 "echo '✅ Connexion SSH réussie !'"
+
       - name: SSH into VPS and deploy
         uses: appleboy/ssh-action@master
         with:
-          host: 51.75.124.6
+          host: 51.75.124.6  # Remplace par ton IP VPS
           username: debian
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script_stop: true  # ✅ Permet de voir les erreurs si SSH échoue
           script: |
             cd /var/www/benoit-demonchaux-website
             git pull origin main
