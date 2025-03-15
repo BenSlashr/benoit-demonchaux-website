@@ -1,0 +1,233 @@
+/* Styles spécifiques pour la page Outils */
+
+/* Hero section pour les outils */
+.tools-hero {
+    height: 40vh;
+    min-height: 300px;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(30, 64, 175, 0.15) 100%);
+    display: flex;
+    align-items: center;
+    padding-top: 70px;
+}
+
+.tools-hero-content {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.tools-hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--dark-color);
+    letter-spacing: -0.5px;
+}
+
+.tools-hero p {
+    font-size: 1.2rem;
+    color: var(--gray-color);
+    margin-bottom: 1.5rem;
+}
+
+.tools-status {
+    margin-top: 1rem;
+}
+
+.coming-soon {
+    display: inline-block;
+    background-color: rgba(59, 130, 246, 0.1);
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+/* Grille d'outils */
+.tools-grid {
+    padding: 4rem 0;
+    background-color: white;
+}
+
+.tools-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.tool-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.tool-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background-color: var(--primary-color);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tool-card:hover::before {
+    opacity: 1;
+}
+
+.tool-icon {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    border-radius: 10px;
+    background-color: rgba(59, 130, 246, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+}
+
+.tool-icon i {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+}
+
+.tool-content {
+    flex: 1;
+}
+
+.tool-content h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: var(--dark-color);
+}
+
+.tool-content p {
+    font-size: 0.9rem;
+    color: var(--gray-color);
+    margin: 0;
+}
+
+.tool-status {
+    margin-left: 1rem;
+}
+
+.status-badge {
+    display: inline-block;
+    background-color: rgba(59, 130, 246, 0.1);
+    color: var(--primary-color);
+    padding: 0.3rem 0.6rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+/* Section CTA */
+.tools-cta {
+    padding: 4rem 0;
+    background-color: rgba(59, 130, 246, 0.05);
+    text-align: center;
+}
+
+.tools-cta h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--dark-color);
+}
+
+.tools-cta p {
+    font-size: 1.1rem;
+    color: var(--gray-color);
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.8rem 1.8rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+}
+
+.cta-button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(59, 130, 246, 0.4);
+}
+
+/* Style pour le lien actif dans la navigation */
+nav ul li a.active {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .tools-hero {
+        height: auto;
+        padding: 6rem 0 3rem;
+    }
+    
+    .tools-hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .tools-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .tools-cta h2 {
+        font-size: 1.8rem;
+    }
+    
+    .tools-cta p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .tools-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .tools-hero p {
+        font-size: 1rem;
+    }
+    
+    .tool-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .tool-icon {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+    
+    .tool-status {
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+}
