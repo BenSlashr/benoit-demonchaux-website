@@ -20,3 +20,15 @@ jobs:
             cd /var/www/benoit-demonchaux-website
             git pull origin main
             sudo systemctl restart nginx
+
+ - name: Debug SSH Connection
+        uses: appleboy/ssh-action@master
+        with:
+          host: 51.75.124.6
+          username: debian
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            echo "✅ Connexion SSH réussie !"
+            whoami
+            ls -l /var/www/benoit-demonchaux-website
+            git status
