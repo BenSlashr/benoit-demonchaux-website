@@ -13,11 +13,10 @@ jobs:
       - name: SSH into VPS and deploy
         uses: appleboy/ssh-action@master
         with:
-          host: 51.75.124.6
+          host: 51.75.124.6  # Remplace par ton IP VPS
           username: debian
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}  # 🔑 Utilise la clé privée stockée dans GitHub Secrets
           script: |
             cd /var/www/benoit-demonchaux-website
             git pull origin main
             sudo systemctl restart nginx
-
